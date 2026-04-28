@@ -61,6 +61,7 @@ export default function Hero() {
 							src="/profile.jpg"
 							alt="Tomás Arrativel"
 							fill
+							sizes="(max-width: 768px) 260px, 340px"
 							className="object-cover"
 							priority
 						/>

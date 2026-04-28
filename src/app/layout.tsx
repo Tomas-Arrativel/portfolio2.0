@@ -5,6 +5,9 @@ export const metadata: Metadata = {
 	title: "Tomás Arrativel — Developer & Builder",
 	description:
 		"Desarrollador, marketer y builder. Combino programación, IA y marketing digital para construir negocios y sistemas que generan resultados reales.",
+	icons: {
+		icon: "/favicon.png", // o /favicon.ico
+	},
 	keywords: [
 		"desarrollador",
 		"marketing digital",
