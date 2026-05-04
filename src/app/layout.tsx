@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Tomás Arrativel — Developer & Builder",
+	title: "Tomás Arrativel - Developer & Builder",
 	description:
 		"Desarrollador, marketer y builder. Combino programación, IA y marketing digital para construir negocios y sistemas que generan resultados reales.",
 	icons: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 	],
 	authors: [{ name: "Tomás Arrativel" }],
 	openGraph: {
-		title: "Tomás Arrativel — Developer & Builder",
+		title: "Tomás Arrativel - Developer & Builder",
 		description:
 			"Programación, IA y marketing digital para construir negocios que escalan.",
 		type: "website",

@@ -14,7 +14,7 @@ interface Project {
 
 const PROJECTS: Project[] = [
 	{
-		title: "Velussir",
+		title: "Ecommerce de Hogar",
 		subtitle: "Ecommerce propio · Sistema de ventas completo",
 		description:
 			"Marca de ecommerce construida desde cero: validación de producto, branding, creativos con IA y tienda en Shopify. Sistema optimizado con bundles, foco en margen y escalabilidad mediante campañas de Meta Ads.",
@@ -22,10 +22,10 @@ const PROJECTS: Project[] = [
 		borderColor: "#7c3aed",
 	},
 	{
-		title: "Alvessir",
+		title: "Sistema de Marketing B2B",
 		subtitle: "Sistema de adquisición para empresas",
 		description:
-			"Agencia enfocada en empresas de remodelación en México y España. Implementación completa: landing pages, campañas en Meta Ads, CRM, automatizaciones y agentes de IA para calificación y seguimiento de leads.",
+			"Agencia enfocada en empresas de pisos epóxicos en México. Implementación completa: landing pages, campañas en Meta Ads, CRM, automatizaciones y agentes de IA para calificación y seguimiento de leads.",
 		tags: ["CRM", "Meta Ads", "IA", "Automatización"],
 		borderColor: "#10b981",
 	},
@@ -38,7 +38,7 @@ const PROJECTS: Project[] = [
 		borderColor: "#0ea5e9",
 	},
 	{
-		title: "Sistema de prospección B2B",
+		title: "Sistema de prospección B2B (por hacer)",
 		subtitle: "Outreach automatizado",
 		description:
 			"Sistema multicanal de prospección (email + WhatsApp) con personalización automática, seguimiento inteligente y estructura enfocada en generar reuniones calificadas de forma constante.",
