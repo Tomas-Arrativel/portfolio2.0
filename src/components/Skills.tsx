@@ -49,6 +49,8 @@ const SKILLS = [
 		dot: "bg-pink-500",
 		items: [
 			"Shopify",
+			"Tienda Nube",
+			"Ecommerce headless",
 			"GoHighLevel",
 			"Email marketing",
 			"WhatsApp automation",
@@ -59,18 +61,6 @@ const SKILLS = [
 		category: "Frontend & UI",
 		dot: "bg-amber-500",
 		items: ["Tailwind CSS", "Bootstrap", "Responsive design", "UX/UI"],
-	},
-	{
-		category: "Real Estate & Content",
-		dot: "bg-indigo-500",
-		items: [
-			"Meta Ads inmobiliario",
-			"Generación de leads",
-			"Contenido para Instagram",
-			"Grabación de propiedades",
-			"Edición de video",
-			"Publicaciones optimizadas",
-		],
 	},
 ];
 

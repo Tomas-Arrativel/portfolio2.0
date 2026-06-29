@@ -22,6 +22,14 @@ const PROJECTS: Project[] = [
 		borderColor: "#7c3aed",
 	},
 	{
+		title: "Tienda online a medida",
+		subtitle: "Ecommerce con código propio · Headless",
+		description:
+			"Tienda construida con código propio (Next.js + checkout headless) para casos donde Shopify o Tienda Nube se quedan cortos: lógica de catálogo personalizada, performance optimizada y total control del frontend. También desarrollo y customizo tiendas en Tienda Nube y Shopify.",
+		tags: ["Next.js", "Tienda Nube", "Shopify", "Headless"],
+		borderColor: "#ec4899",
+	},
+	{
 		title: "Sistema de Marketing B2B",
 		subtitle: "Sistema de adquisición para empresas",
 		description:
@@ -37,23 +45,73 @@ const PROJECTS: Project[] = [
 		tags: ["OpenAI", "WhatsApp API", "Automation", "CRM"],
 		borderColor: "#0ea5e9",
 	},
+];
+
+const UPCOMING: Project[] = [
 	{
-		title: "Sistema de prospección B2B (por hacer)",
+		title: "Sistema de prospección B2B",
 		subtitle: "Outreach automatizado",
 		description:
 			"Sistema multicanal de prospección (email + WhatsApp) con personalización automática, seguimiento inteligente y estructura enfocada en generar reuniones calificadas de forma constante.",
 		tags: ["Outreach", "Automatización", "Copywriting", "B2B"],
 		borderColor: "#f97316",
 	},
-	{
-		title: "Sistema de marketing inmobiliario",
-		subtitle: "Leads + contenido + automatización",
-		description:
-			"Implementación de sistema para inmobiliarias: campañas en Meta Ads, generación de leads, contenido en redes sociales y automatización del seguimiento para maximizar consultas y visitas.",
-		tags: ["Real Estate", "Meta Ads", "Contenido", "Automatización"],
-		borderColor: "#6366f1",
-	},
 ];
+
+function ProjectCard({
+	project,
+	upcoming = false,
+}: {
+	project: Project;
+	upcoming?: boolean;
+}) {
+	return (
+		<div
+			className="rounded-2xl p-7 h-full flex flex-col transition-transform duration-300 hover:-translate-y-1"
+			style={{
+				background: "rgba(255,255,255,0.03)",
+				border: "1px solid rgba(255,255,255,0.07)",
+				borderTop: `2px solid ${project.borderColor}`,
+				opacity: upcoming ? 0.85 : 1,
+			}}
+		>
+			<div className="flex items-start justify-between mb-3">
+				<div>
+					<div className="flex items-center gap-2">
+						<h3 className="text-xl font-bold text-white">{project.title}</h3>
+						{upcoming && (
+							<span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full text-violet-300 border border-violet-500/30 bg-violet-500/10">
+								Próximamente
+							</span>
+						)}
+					</div>
+					<p className="text-sm text-zinc-500 mt-0.5">{project.subtitle}</p>
+				</div>
+				{project.link && (
+					<a
+						href={project.link}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-zinc-600 hover:text-white transition-colors mt-1"
+						aria-label={`Ver ${project.title}`}
+					>
+						<ExternalLink size={17} />
+					</a>
+				)}
+			</div>
+
+			<p className="text-sm text-zinc-400 leading-relaxed flex-1 mb-5">
+				{project.description}
+			</p>
+
+			<div className="flex flex-wrap gap-2">
+				{project.tags.map((tag) => (
+					<Tag key={tag} label={tag} />
+				))}
+			</div>
+		</div>
+	);
+}
 
 export default function Projects() {
 	return (
@@ -64,49 +122,23 @@ export default function Projects() {
 				<div className="grid md:grid-cols-2 gap-6">
 					{PROJECTS.map((project, i) => (
 						<FadeIn key={project.title} delay={i * 80}>
-							<div
-								className="rounded-2xl p-7 h-full flex flex-col transition-transform duration-300 hover:-translate-y-1"
-								style={{
-									background: "rgba(255,255,255,0.03)",
-									border: "1px solid rgba(255,255,255,0.07)",
-									borderTop: `2px solid ${project.borderColor}`,
-								}}
-							>
-								<div className="flex items-start justify-between mb-3">
-									<div>
-										<h3 className="text-xl font-bold text-white">
-											{project.title}
-										</h3>
-										<p className="text-sm text-zinc-500 mt-0.5">
-											{project.subtitle}
-										</p>
-									</div>
-									{project.link && (
-										<a
-											href={project.link}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="text-zinc-600 hover:text-white transition-colors mt-1"
-											aria-label={`Ver ${project.title}`}
-										>
-											<ExternalLink size={17} />
-										</a>
-									)}
-								</div>
-
-								<p className="text-sm text-zinc-400 leading-relaxed flex-1 mb-5">
-									{project.description}
-								</p>
-
-								<div className="flex flex-wrap gap-2">
-									{project.tags.map((tag) => (
-										<Tag key={tag} label={tag} />
-									))}
-								</div>
-							</div>
+							<ProjectCard project={project} />
 						</FadeIn>
 					))}
 				</div>
+
+				{UPCOMING.length > 0 && (
+					<div className="mt-20">
+						<SectionHeader eyebrow="Próximamente" title="En lo que trabajo." />
+						<div className="grid md:grid-cols-2 gap-6">
+							{UPCOMING.map((project, i) => (
+								<FadeIn key={project.title} delay={i * 80}>
+									<ProjectCard project={project} upcoming />
+								</FadeIn>
+							))}
+						</div>
+					</div>
+				)}
 			</div>
 		</section>
 	);

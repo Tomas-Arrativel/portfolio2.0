@@ -20,7 +20,7 @@ const SERVICES = [
 	{
 		icon: "🛒",
 		title: "Ecommerce",
-		desc: "Creación de tiendas optimizadas para vender: producto, branding, estructura de oferta y sistema de adquisición de clientes.",
+		desc: "Tiendas online listas para vender, ya sea con código propio (Next.js + headless), Tienda Nube o Shopify. Producto, branding, estructura de oferta y sistema de adquisición de clientes.",
 	},
 	{
 		icon: "💻",
@@ -31,11 +31,6 @@ const SERVICES = [
 		icon: "📊",
 		title: "CRM & ventas",
 		desc: "Implementación de sistemas de gestión de clientes con pipelines, automatizaciones y seguimiento inteligente.",
-	},
-	{
-		icon: "🏠",
-		title: "Marketing para inmobiliarias",
-		desc: "Gestión completa para inmobiliarias: campañas en Meta Ads, generación de leads, contenido para redes sociales, grabación de propiedades y optimización del proceso de venta.",
 	},
 ];
 

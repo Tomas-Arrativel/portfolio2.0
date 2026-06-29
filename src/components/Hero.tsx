@@ -22,7 +22,7 @@ export default function Hero() {
 				{/* TEXTO */}
 				<div className="text-center md:text-left">
 					<span className="inline-block text-xs font-medium tracking-widest px-4 py-2 rounded-full mb-6 text-violet-300 border border-violet-500/20 bg-violet-500/10">
-						Desarrollador · Marketer · Builder
+						Desarrollador · Ecommerce · Automatización con IA
 					</span>
 
 					<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
