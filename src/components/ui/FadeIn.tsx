@@ -1,9 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+
+import { motion } from "framer-motion";
+import { EASE, VIEWPORT } from "@/lib/motion";
 
 interface FadeInProps {
 	children: React.ReactNode;
-	delay?: number;
+	delay?: number; // ms, igual que la API anterior
 	className?: string;
 }
 
@@ -12,31 +14,15 @@ export default function FadeIn({
 	delay = 0,
 	className = "",
 }: FadeInProps) {
-	const ref = useRef<HTMLDivElement>(null);
-	const [inView, setInView] = useState(false);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) setInView(true);
-			},
-			{ threshold: 0.12 },
-		);
-		if (ref.current) observer.observe(ref.current);
-		return () => observer.disconnect();
-	}, []);
-
 	return (
-		<div
-			ref={ref}
+		<motion.div
 			className={className}
-			style={{
-				opacity: inView ? 1 : 0,
-				transform: inView ? "translateY(0)" : "translateY(28px)",
-				transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`,
-			}}
+			initial={{ opacity: 0, y: 28 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={VIEWPORT}
+			transition={{ duration: 0.65, ease: EASE, delay: delay / 1000 }}
 		>
 			{children}
-		</div>
+		</motion.div>
 	);
 }

@@ -1,40 +1,52 @@
-import FadeIn from "./ui/FadeIn";
+"use client";
+
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeader from "./ui/SectionHeader";
+import { fadeUp, stagger, VIEWPORT, SPRING } from "@/lib/motion";
+import type { Dictionary } from "@/dictionaries/types";
 
-const SERVICES = [
-	{
-		icon: "⚡",
-		title: "Automatización de procesos",
-		desc: "Diseño e implementación de sistemas que eliminan tareas manuales: seguimiento de leads, CRM, reportes y flujos internos completamente automatizados.",
-	},
-	{
-		icon: "🤖",
-		title: "Agentes de IA",
-		desc: "Agentes que califican prospectos, responden clientes y agendan reuniones automáticamente, integrados a WhatsApp y CRM.",
-	},
-	{
-		icon: "📈",
-		title: "Generación de clientes",
-		desc: "Estrategia y ejecución de campañas en Meta Ads con foco en resultados: leads calificados y crecimiento sostenido.",
-	},
-	{
-		icon: "🛒",
-		title: "Ecommerce",
-		desc: "Tiendas online listas para vender, ya sea con código propio (Next.js + headless), Tienda Nube o Shopify. Producto, branding, estructura de oferta y sistema de adquisición de clientes.",
-	},
-	{
-		icon: "💻",
-		title: "Desarrollo de sistemas",
-		desc: "Construcción de plataformas, landing pages y herramientas internas adaptadas a cada negocio.",
-	},
-	{
-		icon: "📊",
-		title: "CRM & ventas",
-		desc: "Implementación de sistemas de gestión de clientes con pipelines, automatizaciones y seguimiento inteligente.",
-	},
-];
+export default function Services({ dict }: { dict: Dictionary["services"] }) {
+	const gridRef = useRef<HTMLDivElement>(null);
 
-export default function Services() {
+	// Parallax por columna: cada columna se desplaza a velocidad levemente
+	// distinta mientras la sección cruza el viewport (solo desktop, respeta
+	// prefers-reduced-motion vía gsap.matchMedia).
+	useEffect(() => {
+		gsap.registerPlugin(ScrollTrigger);
+		const mm = gsap.matchMedia();
+
+		mm.add(
+			"(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+			() => {
+				const cards = gsap.utils.toArray<HTMLElement>(
+					gridRef.current?.children ?? [],
+				);
+				cards.forEach((card, i) => {
+					const speed = [0, 14, 28][i % 3];
+					gsap.fromTo(
+						card,
+						{ y: speed },
+						{
+							y: -speed,
+							ease: "none",
+							scrollTrigger: {
+								trigger: gridRef.current,
+								start: "top bottom",
+								end: "bottom top",
+								scrub: 0.6,
+							},
+						},
+					);
+				});
+			},
+		);
+
+		return () => mm.revert();
+	}, []);
+
 	return (
 		<section
 			id="services"
@@ -42,29 +54,44 @@ export default function Services() {
 			style={{ background: "rgba(255,255,255,0.015)" }}
 		>
 			<div className="max-w-5xl mx-auto">
-				<SectionHeader eyebrow="Servicios" title="En qué puedo ayudarte." />
+				<SectionHeader eyebrow={dict.eyebrow} title={dict.title} />
 
-				<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-					{SERVICES.map((service, i) => (
-						<FadeIn key={service.title} delay={i * 60}>
-							<div
-								className="rounded-2xl p-6 h-full transition-transform duration-300 hover:-translate-y-1"
-								style={{
-									background: "rgba(255,255,255,0.03)",
-									border: "1px solid rgba(255,255,255,0.07)",
-								}}
+				<motion.div
+					ref={gridRef}
+					className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+					variants={stagger(0, 0.09)}
+					initial="hidden"
+					whileInView="visible"
+					viewport={VIEWPORT}
+				>
+					{dict.items.map((service) => (
+						<motion.div
+							key={service.title}
+							variants={fadeUp}
+							whileHover={{ y: -6 }}
+							transition={SPRING}
+							className="group rounded-2xl p-6 h-full"
+							style={{
+								background: "rgba(255,255,255,0.03)",
+								border: "1px solid rgba(255,255,255,0.07)",
+							}}
+						>
+							<motion.span
+								className="text-2xl mb-4 inline-block"
+								whileHover={{ rotate: [0, -12, 10, 0], scale: 1.2 }}
+								transition={{ duration: 0.5, ease: "easeInOut" }}
 							>
-								<span className="text-2xl mb-4 block">{service.icon}</span>
-								<h3 className="font-bold text-white mb-2 text-base">
-									{service.title}
-								</h3>
-								<p className="text-sm text-zinc-400 leading-relaxed">
-									{service.desc}
-								</p>
-							</div>
-						</FadeIn>
+								{service.icon}
+							</motion.span>
+							<h3 className="font-bold text-white mb-2 text-base">
+								{service.title}
+							</h3>
+							<p className="text-sm text-zinc-400 leading-relaxed">
+								{service.desc}
+							</p>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
