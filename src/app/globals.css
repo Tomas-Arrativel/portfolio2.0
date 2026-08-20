@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,8 +25,9 @@ html.lenis body {
 	scroll-behavior: auto !important;
 }
 
+/* Las variables --font-* las inyecta next/font desde el layout. */
 body {
-	font-family: "DM Sans", sans-serif;
+	font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
 	background-color: #0a0a0f;
 	color: #ffffff;
 	-webkit-font-smoothing: antialiased;
@@ -39,7 +38,15 @@ h2,
 h3,
 h4,
 h5 {
-	font-family: "Syne", sans-serif;
+	font-family: var(--font-display), "Syne", system-ui, sans-serif;
+}
+
+/* Foco visible: obligatorio para navegación por teclado. El anillo violeta
+   contrasta contra el fondo #0a0a0f en cualquier superficie del sitio. */
+:focus-visible {
+	outline: 2px solid #a78bfa;
+	outline-offset: 3px;
+	border-radius: 4px;
 }
 
 /* Scrollbar */
@@ -50,7 +57,7 @@ h5 {
 	background: #0a0a0f;
 }
 ::-webkit-scrollbar-thumb {
-	background: #333;
+	background: #52525b;
 	border-radius: 2px;
 }
 

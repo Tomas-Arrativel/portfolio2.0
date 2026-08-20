@@ -1,8 +1,24 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Syne, DM_Sans } from "next/font/google";
 import "../globals.css";
 import { getDictionary, hasLocale, locales, type Locale } from "./dictionaries";
 import { SITE_URL, GITHUB_URL, LINKEDIN_URL, EMAIL } from "@/lib/site";
+
+// Fuentes self-hosted por next/font: sin request a fonts.googleapis.com en
+// runtime y sin layout shift.
+const display = Syne({
+	subsets: ["latin"],
+	weight: ["400", "600", "700", "800"],
+	variable: "--font-display",
+	display: "swap",
+});
+
+const body = DM_Sans({
+	subsets: ["latin"],
+	variable: "--font-body",
+	display: "swap",
+});
 
 export async function generateStaticParams() {
 	return locales.map((lang) => ({ lang }));
@@ -33,7 +49,7 @@ export async function generateMetadata({
 		openGraph: {
 			title: dict.meta.title,
 			description: dict.meta.ogDescription,
-			type: "website",
+			type: "profile",
 			url: `/${lang}`,
 			locale: lang === "es" ? "es_AR" : "en_US",
 			siteName: "Tomás Arrativel",
@@ -42,22 +58,42 @@ export async function generateMetadata({
 }
 
 function personJsonLd(lang: Locale) {
+	const spanish = lang === "es";
+
 	return {
 		"@context": "https://schema.org",
 		"@type": "Person",
 		name: "Tomás Arrativel",
 		url: `${SITE_URL}/${lang}`,
 		email: `mailto:${EMAIL}`,
-		jobTitle: lang === "es" ? "Desarrollador y builder" : "Developer & builder",
+		jobTitle: spanish ? "Desarrollador Full Stack" : "Full Stack Developer",
+		description: spanish
+			? "Desarrollador full stack. React, Next.js, Node.js, Python y PostgreSQL. Disponible para trabajo remoto."
+			: "Full stack developer. React, Next.js, Node.js, Python and PostgreSQL. Available for remote roles.",
 		nationality: "Argentina",
+		address: {
+			"@type": "PostalAddress",
+			addressCountry: "AR",
+		},
+		worksFor: {
+			"@type": "Organization",
+			name: spanish
+				? "Municipalidad de Gualeguay"
+				: "Municipality of Gualeguay",
+		},
 		sameAs: [GITHUB_URL, LINKEDIN_URL],
+		knowsLanguage: ["es", "en"],
 		knowsAbout: [
-			"Next.js",
+			"TypeScript",
+			"JavaScript",
 			"React",
+			"Next.js",
+			"Node.js",
 			"Python",
-			"AI automation",
-			"Digital marketing",
-			"Ecommerce",
+			"FastAPI",
+			"PostgreSQL",
+			"Prisma",
+			"REST APIs",
 		],
 	};
 }
@@ -73,7 +109,7 @@ export default async function RootLayout({
 	if (!hasLocale(lang)) notFound();
 
 	return (
-		<html lang={lang}>
+		<html lang={lang} className={`${display.variable} ${body.variable}`}>
 			<body>
 				<script
 					type="application/ld+json"

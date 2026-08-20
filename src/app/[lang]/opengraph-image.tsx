@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { hasLocale, locales } from "./dictionaries";
 
-export const alt = "Tomás Arrativel - Developer & Builder";
+export const alt = "Tomás Arrativel - Full Stack Developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -15,14 +15,13 @@ export default async function Image({
 	params: Promise<{ lang: string }>;
 }) {
 	const { lang } = await params;
-	const tagline =
-		hasLocale(lang) && lang === "en"
-			? "I automate and scale systems that grow businesses."
-			: "Automatizo y escalo sistemas que hacen crecer negocios.";
-	const badge =
-		hasLocale(lang) && lang === "en"
-			? "Developer · Ecommerce · AI Automation"
-			: "Desarrollador · Ecommerce · Automatización con IA";
+	const english = hasLocale(lang) && lang === "en";
+
+	const role = english ? "Full Stack Developer" : "Desarrollador Full Stack";
+	const stack = "React · Next.js · Node.js · Python · PostgreSQL";
+	const availability = english
+		? "Available for remote work · Argentina (GMT-3)"
+		: "Disponible para trabajo remoto · Argentina (GMT-3)";
 
 	return new ImageResponse(
 		(
@@ -42,24 +41,11 @@ export default async function Image({
 				<div
 					style={{
 						display: "flex",
-						alignItems: "center",
-						color: "#c4b5fd",
-						fontSize: 26,
-						letterSpacing: 4,
-						textTransform: "uppercase",
-						marginBottom: 28,
-					}}
-				>
-					{badge}
-				</div>
-				<div
-					style={{
-						display: "flex",
 						color: "#ffffff",
 						fontSize: 84,
 						fontWeight: 700,
 						lineHeight: 1.1,
-						marginBottom: 32,
+						marginBottom: 16,
 					}}
 				>
 					Tomás Arrativel
@@ -67,25 +53,35 @@ export default async function Image({
 				<div
 					style={{
 						display: "flex",
-						color: "#a1a1aa",
-						fontSize: 38,
-						lineHeight: 1.3,
-						maxWidth: 900,
+						color: "#c4b5fd",
+						fontSize: 46,
+						fontWeight: 600,
+						marginBottom: 36,
 					}}
 				>
-					{tagline}
+					{role}
 				</div>
 				<div
 					style={{
 						display: "flex",
-						marginTop: 60,
-						width: 140,
-						height: 6,
-						borderRadius: 3,
-						backgroundImage:
-							"linear-gradient(to right, #7c3aed, rgba(124,58,237,0))",
+						color: "#a1a1aa",
+						fontSize: 34,
+						lineHeight: 1.3,
+						maxWidth: 950,
 					}}
-				/>
+				>
+					{stack}
+				</div>
+				<div
+					style={{
+						display: "flex",
+						marginTop: 56,
+						color: "#e4e4e7",
+						fontSize: 28,
+					}}
+				>
+					{availability}
+				</div>
 			</div>
 		),
 		{ ...size },
