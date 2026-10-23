@@ -4,9 +4,9 @@ const es: Dictionary = {
 	meta: {
 		title: "Tomás Arrativel - Desarrollador Full Stack",
 		description:
-			"Desarrollador full stack con experiencia en React, Next.js, Node.js, Python y PostgreSQL. Sistemas en producción desde 2024. Disponible para trabajo remoto.",
+			"Desarrollador full stack: Next.js, Python e IA aplicada. Construyo producto de punta a punta, con sistemas en producción desde 2024. Disponible para trabajo remoto.",
 		ogDescription:
-			"Desarrollador full stack. React, Next.js, Node.js, Python y PostgreSQL. Disponible para trabajo remoto.",
+			"Desarrollador full stack. Next.js, Python, PostgreSQL e IA aplicada. Disponible para trabajo remoto.",
 		keywords: [
 			"desarrollador full stack",
 			"React",
@@ -15,6 +15,8 @@ const es: Dictionary = {
 			"Python",
 			"TypeScript",
 			"PostgreSQL",
+			"IA aplicada",
+			"API de Claude",
 			"trabajo remoto",
 		],
 	},
@@ -40,11 +42,11 @@ const es: Dictionary = {
 		],
 		titleAria: "Desarrollador Full Stack",
 		subtitle:
-			"Construyo aplicaciones web de punta a punta: interfaces en React y Next.js, APIs en Node.js y Python, y bases PostgreSQL que ya corren en producción.",
+			"Construyo producto de punta a punta, desde la arquitectura hasta el despliegue: interfaces en Next.js, APIs en Python y Node.js, bases PostgreSQL e IA integrada con criterio.",
 		locationParts: ["Argentina", "GMT-3", "Español e inglés"],
 		ctaProjects: "Ver proyectos",
 		ctaCv: "Descargar CV",
-		portraitRole: "Full Stack · TypeScript · Python",
+		portraitRole: "Full Stack · Next.js · Python · IA",
 		productionNote: {
 			title: "Código en producción",
 			note: "con usuarios reales, desde 2024",
@@ -56,8 +58,8 @@ const es: Dictionary = {
 		eyebrow: "Sobre mí",
 		titleLines: ["Trabajo el ciclo", "completo."],
 		stats: [
+			{ value: 4, suffix: "+", label: "Años programando" },
 			{ value: 9, suffix: "+", label: "Proyectos construidos" },
-			{ value: 20, suffix: "+", label: "Tecnologías y herramientas" },
 			{ value: 2, suffix: "+", label: "Años de experiencia profesional" },
 		],
 		paragraphs: [
@@ -72,10 +74,17 @@ const es: Dictionary = {
 				{ text: "." },
 			],
 			[
+				{ text: "Lancé " },
+				{ text: "Iron Basic", highlight: true },
+				{
+					text: ", una plataforma de entrenamiento con IA que está en producción con usuarios reales. Integro IA con criterio: el modelo interpreta y explica, y las reglas de negocio, testeadas y auditables, deciden.",
+				},
+			],
+			[
 				{ text: "Desde abril de 2024 trabajo en el área de sistemas de la " },
 				{ text: "Municipalidad de Gualeguay", highlight: true },
 				{
-					text: ": sistemas internos, código heredado y soporte a usuarios. Es código en producción, con usuarios reales.",
+					text: ": sistemas internos nuevos, bases de datos, modernización de código heredado y soporte a usuarios.",
 				},
 			],
 			[
@@ -125,7 +134,7 @@ const es: Dictionary = {
 			{
 				category: "Lenguajes",
 				dot: "#8b5cf6",
-				items: ["TypeScript", "JavaScript", "Python", "PHP", "SQL"],
+				items: ["TypeScript", "JavaScript", "Python", "PHP", "SQL", "HTML y CSS"],
 			},
 			{
 				category: "Frontend",
@@ -142,20 +151,23 @@ const es: Dictionary = {
 					"PostgreSQL",
 					"MySQL",
 					"Prisma",
+					"SQLAlchemy",
 					"APIs REST",
 				],
 			},
 			{
-				category: "Infraestructura",
+				category: "IA e infraestructura",
 				dot: "#f59e0b",
 				items: [
+					"API de Claude",
+					"OpenAI",
+					"Salidas estructuradas",
+					"Paddle",
+					"PWA offline",
 					"Vercel",
 					"Render",
-					"Neon",
 					"Docker",
 					"Git",
-					"Webhooks",
-					"APIs de LLM",
 				],
 			},
 		],
@@ -163,48 +175,116 @@ const es: Dictionary = {
 	projects: {
 		eyebrow: "Proyectos",
 		title: "Lo que construí.",
-		note: "Los repositorios son privados, así que en lugar de capturas muestro cómo está resuelto cada sistema por dentro.",
+		note: "Los repositorios son privados. Donde puedo muestro capturas reales de la app, y donde no, cómo está resuelto el sistema por dentro.",
 		featuredLabel: "Proyecto destacado",
 		archLabel: "Arquitectura",
-		demoLabel: "Demo",
+		shotsLabel: "Capturas reales",
+		demoLabel: "Ver en vivo",
 		codeLabel: "Código",
 		privateLabel: "Repositorio privado",
 		items: [
 			{
 				title: "Iron Basic",
 				subtitle:
-					"SaaS de entrenamiento donde la IA no decide el plan: lo decide un motor determinístico y auditable.",
+					"SaaS de entrenamiento con IA, en producción con usuarios reales. El modelo interpreta y explica, y las reglas de negocio, testeadas y auditables, deciden el plan.",
 				description:
-					"El problema interesante fue no dejar que el modelo decidiera el plan. La IA traduce preferencias en lenguaje natural a reglas estructuradas, y un motor determinístico las aplica.",
+					"Producto completo de punta a punta: frontend, backend, base de datos, IA, pagos e infraestructura.",
 				bullets: [
 					[
-						{ text: "El modelo traduce preferencias en lenguaje natural a " },
-						{ text: "reglas estructuradas", highlight: true },
-						{ text: ". El motor las aplica, así que el mismo input da el mismo plan." },
+						{ text: "Motor de planificación " },
+						{ text: "basado en reglas testeadas", highlight: true },
+						{
+							text: " que descuenta volumen de gimnasio según las sesiones de otro deporte de cada usuario, y recalibra las cargas cada semana con lo que realmente levantó.",
+						},
 					],
 					[
-						{ text: "Los planes multi semana se recalculan comparando " },
-						{ text: "rendimiento real contra objetivo", highlight: true },
-						{ text: "." },
+						{ text: "Integración con la " },
+						{ text: "API de Claude", highlight: true },
+						{
+							text: " para interpretar pedidos en lenguaje natural, importar rutinas, estimar macros desde fotos y generar resúmenes semanales.",
+						},
+					],
+					[
+						{ text: "Suscripciones con Paddle y " },
+						{ text: "cupos de uso de IA por plan", highlight: true },
+						{
+							text: ". Locks en Postgres para que pedidos en paralelo no cobren dos veces.",
+						},
 					],
 					[
 						{
-							text: "Pagos por webhooks con reintentos e idempotencia, registro por foto con visión artificial y PWA con notificaciones push.",
+							text: "PWA con registro de entrenamientos offline y sincronización posterior, notificaciones push y panel de administración con atribución por UTMs.",
 						},
 					],
 				],
 				scene: "rules",
+				shots: {
+					desktop: "/projects/ironbasic-desktop.webp",
+					mobile: "/projects/ironbasic-mobile.webp",
+					alt: "Landing de Iron Basic y plan semanal generado por el motor de reglas",
+				},
 				tags: [
-					"Next.js 14",
+					"Next.js 15",
 					"TypeScript",
 					"FastAPI",
 					"PostgreSQL",
 					"Prisma",
-					"Visión artificial",
+					"API de Claude",
+					"Paddle",
 					"PWA",
-					"Webhooks",
 				],
-				borderColor: "#22d3ee",
+				borderColor: "#e11d2a",
+				demo: "https://train.ironbasic.com/",
+				repoPrivate: true,
+			},
+			{
+				title: "Slate",
+				subtitle:
+					"Finanzas personales offline first. Un gasto se carga sin señal, aparece al instante y se sincroniza cuando vuelve la conexión, sin duplicados aunque el envío se repita.",
+				description:
+					"IndexedDB es la fuente de verdad del cliente. El servidor hace upsert por un id generado en el cliente, resuelve conflictos con last write wins y el cursor de sincronización usa el reloj del servidor.",
+				scene: "rules",
+				shots: {
+					desktop: "/projects/slate-desktop.webp",
+					mobile: "/projects/slate-mobile.webp",
+					alt: "Resumen mensual de Slate en escritorio y mobile",
+				},
+				tags: [
+					"Next.js 15",
+					"React 19",
+					"TypeScript",
+					"IndexedDB",
+					"FastAPI",
+					"PostgreSQL",
+					"Web Push",
+				],
+				borderColor: "#8b6cff",
+				demo: "https://slateapp-alpha.vercel.app/",
+				repoPrivate: true,
+			},
+			{
+				title: "CRM para empresas de pisos epóxicos",
+				subtitle:
+					"CRM multi tenant con aislamiento real por Row Level Security de Postgres. Un agente de IA califica las consultas de WhatsApp y le cede el control a una persona sin perder el contexto.",
+				description:
+					"Inbox de WhatsApp, pipeline, agenda con reservas, reportes y automatizaciones, con webhooks idempotentes y bloqueo por remitente.",
+				scene: "agent",
+				shots: {
+					desktop: "/projects/crm-desktop.webp",
+					mobile: "/projects/crm-mobile.webp",
+					alt: "Pipeline del CRM en escritorio y mobile",
+				},
+				tags: [
+					"Next.js 16",
+					"TypeScript",
+					"Prisma",
+					"PostgreSQL",
+					"FastAPI",
+					"WhatsApp API",
+					"OpenAI",
+				],
+				borderColor: "#9fe050",
+				demo: "https://crm.alvessir.com/",
 				repoPrivate: true,
 			},
 			{
@@ -226,44 +306,27 @@ const es: Dictionary = {
 				repoPrivate: true,
 			},
 			{
-				title: "CRM con agente conversacional",
+				title: "Kairotax",
 				subtitle:
-					"API en FastAPI y CRM en Next.js sobre la misma base: un solo estado por lead. El agente califica por WhatsApp y cede el control a una persona sin perder contexto.",
+					"SaaS multi tenant para estudios contables, en desarrollo. Cartera de clientes, vencimientos, cierre mensual, IVA e Ingresos Brutos, y facturación electrónica conectada a ARCA.",
 				description:
-					"La orquestación de flujos y reintentos va con n8n, y el override humano puede entrar en cualquier punto de la conversación.",
-				scene: "agent",
+					"La integración con ARCA firma el ticket de acceso como CMS/PKCS#7 desde Node, sin OpenSSL, y guarda los certificados cifrados con AES-256-GCM. Los importes usan decimales exactos, nunca floats.",
+				scene: "tenant",
+				shots: {
+					desktop: "/projects/kairotax-desktop.webp",
+					mobile: "/projects/kairotax-mobile.webp",
+					alt: "Calendario de vencimientos y cartera de clientes de Kairotax",
+				},
 				tags: [
-					"FastAPI",
-					"Python",
-					"Next.js",
+					"Next.js 16",
+					"TypeScript",
 					"PostgreSQL",
-					"n8n",
-					"WhatsApp API",
-					"APIs de LLM",
+					"Drizzle",
+					"Better Auth",
+					"API de Claude",
+					"SOAP",
 				],
-				borderColor: "#10b981",
-				repoPrivate: true,
-			},
-			{
-				title: "Auditor web automatizado",
-				subtitle:
-					"Cruza rendimiento, píxeles de seguimiento y datos de contacto en una pasada. Si una fuente falla, el informe sale igual y marca qué falta en lugar de romperse.",
-				description:
-					"Con los datos crudos arma un informe en lenguaje natural usando la API de Anthropic.",
-				scene: "audit",
-				tags: ["Python", "PageSpeed API", "API de Anthropic", "Scraping"],
-				borderColor: "#f59e0b",
-				repoPrivate: true,
-			},
-			{
-				title: "Ecommerce y sistemas de venta",
-				subtitle:
-					"Tienda headless con Next.js y un catálogo de más de 1.300 productos con precios mayorista y minorista resueltos en el modelo de datos, no duplicando el catálogo.",
-				description:
-					"Incluye integración de pagos y sincronización de stock por webhooks.",
-				scene: "shop",
-				tags: ["Next.js", "TypeScript", "Headless", "Webhooks", "Pagos"],
-				borderColor: "#8b5cf6",
+				borderColor: "#38bdf8",
 				repoPrivate: true,
 			},
 		],
@@ -271,25 +334,34 @@ const es: Dictionary = {
 	experience: {
 		eyebrow: "Experiencia",
 		title: "Dónde trabajé.",
-		note: "Dos años de trabajo remoto y presencial, en español e inglés.",
+		note: "Más de cuatro años programando y producto propio en producción, en español e inglés.",
 		currentLabel: "En curso",
 		jobs: [
 			{
-				role: "Desarrollador Full Stack",
+				role: "Fundador y desarrollador",
+				org: "Iron Basic",
+				period: "Junio 2026 · Presente",
+				current: true,
+				sealText: "IB",
+				desc: "Plataforma de entrenamiento y nutrición con IA. Diseñé y desarrollé el producto completo: frontend, backend, base de datos, IA, pagos e infraestructura.",
+				tags: ["Next.js", "FastAPI", "PostgreSQL", "API de Claude", "Paddle"],
+			},
+			{
+				role: "Desarrollador",
 				org: "Municipalidad de Gualeguay",
 				period: "Abril 2024 · Presente",
 				current: true,
 				sealText: "MG",
-				desc: "Desarrollo y mantenimiento de sistemas internos, trabajo sobre código heredado y soporte a usuarios de las distintas áreas.",
+				desc: "Sistemas internos nuevos para empleados municipales, desde el diseño de la base de datos hasta la interfaz. Modernización de sistemas heredados, mantenimiento de las bases de datos y soporte a usuarios internos.",
 				tags: ["PHP", "MySQL", "JavaScript"],
 			},
 			{
-				role: "Desarrollo independiente",
-				org: "Proyectos propios",
-				period: "2025 · Presente",
+				role: "Fundador y desarrollador",
+				org: "CRM y captación de clientes",
+				period: "Febrero 2026 · Presente",
 				current: true,
-				desc: "Aplicaciones full stack completas: SaaS con pagos y modelos de lenguaje, plataformas multi tenant, CRM y agentes conversacionales.",
-				tags: ["Next.js", "TypeScript", "FastAPI", "PostgreSQL"],
+				desc: "CRM propio en Next.js para empresas de pisos epóxicos de México y Colombia, con agentes de IA que califican las consultas por WhatsApp.",
+				tags: ["Next.js", "Prisma", "PostgreSQL", "WhatsApp API"],
 			},
 			{
 				role: "Desarrollador Front End, pasantía remota",
@@ -305,7 +377,7 @@ const es: Dictionary = {
 			{
 				title: "Full-Stack Engineer",
 				org: "Codecademy",
-				period: "2025",
+				period: "2024 · 2025",
 				sealIcon: "Codecademy",
 			},
 			{
@@ -313,6 +385,12 @@ const es: Dictionary = {
 				org: "Universidad Tecnológica Nacional",
 				period: "2023",
 				sealText: "UTN",
+			},
+			{
+				title: "Marketing Digital",
+				org: "CoderHouse",
+				period: "2026",
+				sealText: "CH",
 			},
 		],
 	},

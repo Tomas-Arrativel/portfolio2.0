@@ -62,6 +62,8 @@ export interface Dictionary {
 		note: string;
 		featuredLabel: string;
 		archLabel: string;
+		/** Reemplaza a archLabel cuando la tarjeta muestra capturas reales. */
+		shotsLabel: string;
 		demoLabel: string;
 		codeLabel: string;
 		privateLabel: string;
@@ -72,6 +74,8 @@ export interface Dictionary {
 			/** Solo el destacado desglosa el problema en viñetas. */
 			bullets?: Segment[][];
 			scene: SceneKey;
+			/** Capturas reales en public/projects. Si están, reemplazan al diagrama. */
+			shots?: { desktop: string; mobile: string; alt: string };
 			tags: string[];
 			borderColor: string;
 			demo?: string;

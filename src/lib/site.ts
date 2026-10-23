@@ -6,6 +6,6 @@ export const EMAIL = "arrativeltomas@gmail.com";
 
 // CV por idioma. Los PDFs viven en public/cv/.
 export const CV_URL: Record<"es" | "en", string> = {
-	es: "/cv/tomas-arrativel-cv-es.pdf",
-	en: "/cv/tomas-arrativel-cv-en.pdf",
+	es: "/cv/CV_Tomas_Arrativel_ES.pdf",
+	en: "/cv/CV_Tomas_Arrativel_EN.pdf",
 };

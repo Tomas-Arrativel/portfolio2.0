@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Lock, Workflow } from "lucide-react";
+import { ExternalLink, Lock, MonitorSmartphone, Workflow } from "lucide-react";
 import SectionHeader from "./ui/SectionHeader";
 import Tag from "./ui/Tag";
 import ProjectDiagram from "./ui/ProjectDiagram";
+import ProjectShots from "./ui/ProjectShots";
 import SectionBackground from "./ui/SectionBackground";
 import { GithubIcon } from "./ui/BrandIcons";
 import { fadeUp, stagger, tagPop, SPRING_SOFT } from "@/lib/motion";
@@ -22,6 +23,7 @@ const CARD_STYLE = {
 };
 
 // Panel del diagrama: superficie apenas más clara, con su propia grilla de puntos.
+// Si el proyecto tiene capturas reales, se muestran esas en lugar del diagrama.
 function Diagram({
 	project,
 	lang,
@@ -31,6 +33,18 @@ function Diagram({
 	lang: "es" | "en";
 	className: string;
 }) {
+	if (project.shots) {
+		return (
+			<ProjectShots
+				desktop={project.shots.desktop}
+				mobile={project.shots.mobile}
+				alt={project.shots.alt}
+				color={project.borderColor}
+				className={className}
+			/>
+		);
+	}
+
 	return (
 		<div
 			className={`relative rounded-[14px] overflow-hidden border border-white/[0.06] ${className}`}
@@ -66,7 +80,7 @@ function Links({
 	project: Project;
 	labels: Pick<
 		ProjectsDict,
-		"demoLabel" | "codeLabel" | "privateLabel" | "archLabel"
+		"demoLabel" | "codeLabel" | "privateLabel" | "archLabel" | "shotsLabel"
 	>;
 }) {
 	return (
@@ -79,8 +93,12 @@ function Links({
 					border: `1px solid ${project.borderColor}44`,
 				}}
 			>
-				<Workflow size={12} aria-hidden />
-				{labels.archLabel}
+				{project.shots ? (
+					<MonitorSmartphone size={12} aria-hidden />
+				) : (
+					<Workflow size={12} aria-hidden />
+				)}
+				{project.shots ? labels.shotsLabel : labels.archLabel}
 			</span>
 
 			{project.demo && (
@@ -138,7 +156,7 @@ function FeaturedCard({
 			<Diagram
 				project={project}
 				lang={lang}
-				className="h-[220px] sm:h-[280px] lg:h-auto lg:min-h-[320px]"
+				className="aspect-[16/10.5] lg:aspect-auto lg:min-h-[360px]"
 			/>
 
 			<div className="flex flex-col items-start">
@@ -222,7 +240,7 @@ function ProjectCard({
 			style={{ ...CARD_STYLE, borderTop: `2px solid ${project.borderColor}` }}
 		>
 			<div className="p-5 pb-0">
-				<Diagram project={project} lang={lang} className="h-[170px] sm:h-[190px]" />
+				<Diagram project={project} lang={lang} className="aspect-[16/10]" />
 			</div>
 
 			<div className="flex flex-col items-start flex-1 px-5 sm:px-6 pt-5 pb-6">
